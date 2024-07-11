@@ -19,14 +19,14 @@ const SignIn = ({ providers }: SignInProps) => {
     await signIn("credentials", {
       email,
       password,
-      callbackUrl: "/",
+      callbackUrl: "/dashboard",
     });
   };
 
   return (
     <div className={styles.containerWrapper}>
       <div className={styles.container}>
-        <h1>Вход</h1>
+        <h1>Sign in</h1>
         <form onSubmit={handleSignIn}>
           <div className={styles.formControl}>
             <FloatLabel>
@@ -36,7 +36,7 @@ const SignIn = ({ providers }: SignInProps) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <label htmlFor="email">Имейл адрес</label>
+              <label htmlFor="email">Email</label>
             </FloatLabel>
           </div>
           <div className={styles.formControl}>
@@ -47,11 +47,11 @@ const SignIn = ({ providers }: SignInProps) => {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <label htmlFor="password">Парола</label>
+              <label htmlFor="password">Password</label>
             </FloatLabel>
           </div>
           <button className={styles.submitBtn} type="submit">
-            Вход
+            Sign in
           </button>
         </form>
       </div>

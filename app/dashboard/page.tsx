@@ -1,3 +1,7 @@
 export default async function Dashboard() {
-  return <>Super Secret Page</>
+  return (
+    <section className="secttion-margin">
+          <h1>Main Content</h1>
+    </section>
+  )
 }
