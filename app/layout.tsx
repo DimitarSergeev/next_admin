@@ -13,7 +13,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const currentPath = usePathname();
-  console.log(currentPath);
 
   const shouldShowSidebar = !["/login", "/api/auth/signin"].includes(
     currentPath

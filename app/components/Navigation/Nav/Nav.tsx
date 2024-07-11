@@ -27,7 +27,6 @@ export default function Nav() {
         const res = await fetch("/api/auth/session");
         if (res.ok) {
           const session: SessionResponse = await res.json();
-          console.log("session", session);
 
           if (session.user && session.user.email) {
             setUserData(session.user);
@@ -52,7 +51,6 @@ export default function Nav() {
   const toggleSearch = (value: boolean) => {
     setSearchOpen(value);
   };
-  console.log("user", userData);
 
   return (
     <nav className={styles.navigation}>

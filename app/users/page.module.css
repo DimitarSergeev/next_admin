@@ -1,0 +1,22 @@
+.tableHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Jost", sans-serif;
+}
+.iconCont{
+    position: relative;
+}
+.iconCont i {
+    position: absolute;
+    top: 30%;
+    left: 5%;
+}
+.tableHeader .inputIcon{
+    padding-left: 36px;
+}
+.pageHeader{
+    display: flex;
+    padding: 12px;
+    justify-content: flex-end;
+}

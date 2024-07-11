@@ -28,7 +28,8 @@ export const authOptions: NextAuthOptions = {
             email: credentials.email
           }
         })
-
+        console.log('User', user);
+        
         if (!user) {
           return null
         }
