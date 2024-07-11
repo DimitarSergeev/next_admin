@@ -62,3 +62,51 @@
   color: white;
 }
 
+/* Search  */
+
+.headerSearch {
+  float: left;
+  line-height: 4.4;
+  padding: 0 20px;
+  cursor: pointer;
+  position: relative;
+}
+.headerSearch .open {
+    color: #000;
+    line-height: 1;
+}
+.mainSearch {
+    padding: 19px 0;
+    display: block;
+}
+.inputGroup {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 0;
+    background-color: transparent;
+    border-radius: 20px;
+}
+.formControl {
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  border: none;
+  font-size: 16px;
+  padding: 6px 12px;
+  font-family: 'Jost', sans-serif;
+  transition: visibility 0s, opacity 0.3s ease, width 0.3s ease;
+}
+.formControl:focus {
+  outline: none;
+  border-bottom: 1px solid #000;
+}
+.inputGroup.open .formControl {
+  visibility: visible;
+  opacity: 1;
+  width: 200px;
+  color: #000;
+}
