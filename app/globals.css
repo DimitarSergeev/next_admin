@@ -4,13 +4,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #3b434b ;
-
 }
 body {
   margin: 0;
 }
-
+.p-inputtext {
+  padding: 0.75rem 0.75rem;
+}
+.p-float-label label {
+  margin-top: -0.5rem;
+}
 .secttion-margin {
   margin-left: 280px;
 }
@@ -28,4 +31,9 @@ ul li {
   transition: all 0.5s ease;
   z-index: 2;
   padding: 0 12px;
+}
+
+.sidebar-open .custom-section {
+  left: 280px;
+  width: calc(100% - 280px);
 }

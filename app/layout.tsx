@@ -22,9 +22,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-              {shouldShowSidebar && <SideBar />}
+          {shouldShowSidebar && (
+            <>
+              <SideBar />
               <Nav />
-              {children}
+            </>
+          )}
+          {children}
         </Providers>
       </body>
     </html>

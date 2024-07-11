@@ -10,7 +10,7 @@ export async function GET(request: Request) {
       status: 401
     })
   }
-
-  console.log('GET API', session)
+   console.log('get session', session);
+   
   return NextResponse.json({ authenticated: !!session })
 }
