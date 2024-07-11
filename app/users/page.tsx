@@ -8,6 +8,7 @@ import { Button } from "primereact/button";
 import { useRouter } from "next/navigation";
 
 import styles from "./page.module.css";
+import PageHeader from "../components/utils/PageHeader";
 
 interface User {
   id: number;
@@ -72,14 +73,8 @@ export default function UserList() {
 
   return (
     <section className="dashboard-section custom-section">
-      <div className={styles.pageHeader}>
-        <Button
-          label="Create User"
-          className="p-button-primary"
-          raised
-          onClick={() => router.push("/users/create")}
-        />
-      </div>
+    
+      <PageHeader title="" link="/users/create" linkText="Create User" />
       <DataTable
         value={users}
         paginator

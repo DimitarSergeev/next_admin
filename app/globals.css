@@ -1,5 +1,5 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import url('primeicons/primeicons.css');
+@import url("primeicons/primeicons.css");
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 * {
   box-sizing: border-box;
@@ -35,4 +35,13 @@ ul li {
 .sidebar-open .custom-section {
   left: 280px;
   width: calc(100% - 280px);
+}
+.pageHeader {
+  display: flex;
+  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+.pageHeader h1{
+  margin: 0;
 }
