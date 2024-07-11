@@ -18,7 +18,7 @@ interface SessionResponse {
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [userData, setUserData] = useState<Object | undefined>({});
+  const [userData, setUserData] = useState<User | undefined>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
