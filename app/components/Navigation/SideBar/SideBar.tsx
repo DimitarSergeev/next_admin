@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import styles from "./SideBar.module.css";
-import { LogoutButton } from "@/app/auth";
-import { Avatar } from "primereact/avatar";
+
 export default function SideBar() {
   // State to manage the sidebar open/close state
   const [isOpen, setIsOpen] = useState(false);
@@ -12,60 +12,50 @@ export default function SideBar() {
   const handleSidebarToggle = () => {
     setIsOpen((prev) => !prev);
   };
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("sidebar-open");
+    } else {
+      document.body.classList.remove("sidebar-open");
+    }
 
+    return () => {
+      document.body.classList.remove("sidebar-open");
+    };
+  }, [isOpen]);
   return (
     <>
       <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
         <div className={styles.logoDetails}>
-          {/* <i className="fa-solid fa-circle-left"></i> */}
           <i
-            // className="fa-solid fa-circle-right"
             className={`${
               isOpen ? "fa-brands fa-codepen" : "fa-solid fa-circle-right"
             }`}
             onClick={handleSidebarToggle}
           ></i>
           <div className={styles.logo_name}>SideMenu</div>
-          {/* Update the class based on the isOpen state */}
           <i
             className={`${isOpen ? "fa-solid fa-circle-left" : ""}`}
-            // className="fa-solid fa-circle-left"
             onClick={handleSidebarToggle}
           />
         </div>
         <ul className={styles.navList}>
           <li>
-            <a href="#">
+            <Link href="/dashboard">
               <i className="fa-solid fa-table-columns"></i>
               <span className={styles.linksName}>Dashboard</span>
-            </a>
+            </Link>
             <span className={styles.tooltip}>Dashboard</span>
           </li>
           <li>
-            <a href="#">
+            <Link href="/users">
               <i className="fa-solid fa-id-badge"></i>
               <span className={styles.linksName}>User</span>
-            </a>
+            </Link>
             <span className={styles.tooltip}>User</span>
-          </li>
-
-          <li className={styles.profile}>
-            <div className={styles.profileDetails}>
-              <i className="fa-solid fa-arrow-right-from-bracket"></i>
-              <div className={styles.name_job}>
-                <div
-                  className={styles.name}
-                  style={{ visibility: isOpen ? "visible" : "hidden" }}
-                >
-                  Logout
-                </div>
-              </div>
-            </div>
-            <i className="fa-solid fa-arrow-right-from-bracket"></i>
           </li>
         </ul>
       </div>
-      
     </>
   );
 }

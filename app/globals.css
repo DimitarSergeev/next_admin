@@ -1,4 +1,4 @@
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 * {
   margin: 0;
@@ -13,7 +13,11 @@ body {
   margin-left: 280px;
 }
 
-.home-section {
+ul li {
+  list-style: none;
+}
+
+.custom-section {
   position: relative;
   min-height: 100vh;
   top: 0;
@@ -21,8 +25,5 @@ body {
   width: calc(100% - 78px);
   transition: all 0.5s ease;
   z-index: 2;
-}
-.sidebar.open ~ .home-section {
-  left: 250px;
-  width: calc(100% - 250px);
+  padding: 0 12px;
 }

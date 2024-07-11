@@ -5,6 +5,8 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 
 import { usePathname } from "next/navigation";
 import SideBar from "./components/Navigation/SideBar/SideBar";
+import Nav from "./components/Navigation/Nav/Nav";
+
 export default function RootLayout({
   children,
 }: {
@@ -20,12 +22,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          {/* <div style={{ display: "flex" }}> */}
               {shouldShowSidebar && <SideBar />}
-            <section className="home-section">
+              <Nav />
               {children}
-            </section>
-          {/* </div> */}
         </Providers>
       </body>
     </html>
