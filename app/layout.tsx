@@ -7,6 +7,14 @@ import { usePathname } from "next/navigation";
 import SideBar from "./components/Navigation/SideBar/SideBar";
 import Nav from "./components/Navigation/Nav/Nav";
 
+
+import { registerPlugin } from "react-filepond";
+import "filepond/dist/filepond.min.css";
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 export default function RootLayout({
   children,
 }: {
