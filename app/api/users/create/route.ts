@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   }
 
   let filePath;
-  if (file) {
+  if (file.name) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     // Save the file
@@ -37,17 +37,30 @@ export async function POST(request: NextRequest) {
     await writeFile(filePath, buffer);
   }
   try {
-    await prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         name,
         email,
         password: passwordHash,
-        image: file ? `/uploads/users/${file.name}` : null,
+        image: file.name ? `/uploads/users/${file.name}` : null,
       },
     });
-  } catch (error) {
-    return new NextResponse("Error saving user data", { status: 500 });
-  }
+    console.log(user);
 
-  return NextResponse.json({ success: true, message: "User created" });
+    return NextResponse.json({
+      success: true,
+      message: "User created",
+      user_id: user.id,
+    });
+  } catch (error) {
+    const message =
+      error.code == "P2002" && error.meta?.target.includes("email")
+        ? "Email already exists"
+        : "Error saving user data";
+
+    return NextResponse.json({
+      success: false,
+      message: message,
+    });
+  }
 }

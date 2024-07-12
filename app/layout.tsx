@@ -14,6 +14,9 @@ import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 export default function RootLayout({
   children,
@@ -37,6 +40,7 @@ export default function RootLayout({
           )}
           {children}
         </Providers>
+        <ToastContainer />
       </body>
     </html>
   );

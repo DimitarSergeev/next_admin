@@ -28,7 +28,6 @@ export const authOptions: NextAuthOptions = {
             email: credentials.email
           }
         })
-        console.log('User', user);
         
         if (!user) {
           return null
@@ -54,7 +53,6 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     session: ({ session, token }) => {
-      console.log('Session Callback', { session, token })
       return {
         ...session,
         user: {
@@ -65,7 +63,6 @@ export const authOptions: NextAuthOptions = {
       }
     },
     jwt: ({ token, user }) => {
-      console.log('JWT Callback', { token, user })
       if (user) {
         const u = user as unknown as any
         return {
