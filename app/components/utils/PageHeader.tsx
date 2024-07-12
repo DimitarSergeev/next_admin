@@ -10,7 +10,7 @@ export default function PageHeader({
 }: {
   title: string;
   link?: string;
-  linkText: string;
+  linkText?: string;
 }) {
   const router = useRouter();
 
