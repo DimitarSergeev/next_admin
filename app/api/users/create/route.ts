@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       message: "User created",
       user_id: user.id,
     });
-  } catch (error) {
+  } catch (error: Error | any) {
     const message =
       error.code == "P2002" && error.meta?.target.includes("email")
         ? "Email already exists"

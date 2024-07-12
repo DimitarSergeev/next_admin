@@ -1,7 +1,7 @@
 "use client";
 import PageHeader from "@/app/components/utils/PageHeader";
 import { InputText } from "primereact/inputtext";
-import { FilePond, FilePondFile } from "react-filepond";
+import { FilePond } from "react-filepond";
 import { Button } from "primereact/button";
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
@@ -18,7 +18,7 @@ export default function EditPage() {
     password: "",
     image: "",
   });
-  const [files, setFiles] = useState<FilePondFile[]>([]);
+  const [files, setFiles] = useState([]);
 
   // Fetch user data on component mount
   useEffect(() => {

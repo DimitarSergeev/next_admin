@@ -120,7 +120,7 @@ export async function PUT(
       message: "User updated",
       user_id: updatedUser.id,
     });
-  } catch (error) {
+  } catch (error: Error | any) {
     const message =
       error.code == "P2002" && error.meta?.target.includes("email")
         ? "Email already exists"

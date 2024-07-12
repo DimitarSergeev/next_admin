@@ -48,7 +48,7 @@ export default function CreateUser() {
           toast.error(response.message);
         }
       }
-    } catch (error) {
+    } catch (error: Error | any) {
       toast.error(error.message);
     }
   };
