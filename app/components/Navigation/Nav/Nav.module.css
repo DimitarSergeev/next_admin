@@ -11,7 +11,14 @@
   box-shadow: 0 2px 4px 0 rgba(43, 43, 43, 0.1);
   font-family: "Jost", sans-serif;
 }
+.navigation .wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  user-select: none;
 
+}
 .user,
 .wrapper {
   display: flex;
@@ -73,23 +80,23 @@
   position: relative;
 }
 .headerSearch .open {
-    color: #000;
-    line-height: 1;
+  color: #000;
+  line-height: 1;
 }
 .mainSearch {
-    padding: 19px 0;
-    display: block;
+  padding: 19px 0;
+  display: block;
 }
 .inputGroup {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-bottom: 0;
-    background-color: transparent;
-    border-radius: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 0;
+  background-color: transparent;
+  border-radius: 20px;
 }
 .formControl {
   visibility: hidden;
@@ -98,7 +105,7 @@
   border: none;
   font-size: 16px;
   padding: 6px 12px;
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
   transition: visibility 0s, opacity 0.3s ease, width 0.3s ease;
 }
 .formControl:focus {
@@ -110,4 +117,79 @@
   opacity: 1;
   width: 200px;
   color: #000;
+}
+
+.sidebarMobile {
+  background-color: var(--primary-color);
+  color: white;
+  font-family: "Jost", sans-serif;
+}
+.sidebarMobile .sidebar .logoDetails {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.sidebarMobile .sidebar .logoDetails .logo_name {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+.sidebarMobile .sidebar i {
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebarMobile .tooltip {
+  display: none;
+}
+.sidebarMobile li a {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  /* background: #11101d; */
+}
+.sidebarMobile .sidebar li a:hover {
+  background: #fff;
+}
+.sidebarMobile .sidebar li a .linksName {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.sidebarMobile .sidebar li a:hover .linksName,
+.sidebarMobile .sidebar li a:hover i {
+  transition: all 0.5s ease;
+  color: #0891b2;
+}
+.toggleBtn {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .toggleBtn {
+    display: block;
+  }
+  .navigation{
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 12px;
+  }
+  .headerSearch,.userEmail {
+    display: none;
+  }
 }

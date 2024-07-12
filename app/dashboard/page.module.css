@@ -34,3 +34,10 @@
     letter-spacing: 1.2px;
     margin: 6px 0;
 }
+
+@media screen and (max-width: 1000px) {
+  .statsCards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+    
+}

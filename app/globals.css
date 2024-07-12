@@ -51,3 +51,10 @@ ul li {
   object-fit: cover;
   background-position: center;
 }
+
+@media screen and (max-width: 1000px) {
+  .custom-section{
+    left: 0;
+    width: 100%;
+  }
+}
