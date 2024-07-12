@@ -45,3 +45,9 @@ ul li {
 .pageHeader h1{
   margin: 0;
 }
+.avatar-image{
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  object-fit: cover;
+  background-position: center;
+}

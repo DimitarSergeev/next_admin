@@ -35,6 +35,7 @@
 .user .subItems {
   position: absolute;
   top: 60px;
+  background-color: white;
   padding: 12px;
   box-shadow: 0 2px 4px 0 rgba(43, 43, 43, 0.1);
   width: 100%;

@@ -1,8 +1,8 @@
 "use client";
 import styles from "./Nav.module.css";
 import { useState, useEffect } from "react";
-import { Avatar } from "primereact/avatar";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 
 interface User {
   email?: string | null;
@@ -52,6 +52,7 @@ export default function Nav() {
     setSearchOpen(value);
   };
 
+  const imagePath = userData?.image || "/images/avatar-placeholder.jpg";
   return (
     <nav className={styles.navigation}>
       <div className={styles.headerSearch}>
@@ -81,7 +82,13 @@ export default function Nav() {
       </div>
       <div className={styles.user} onClick={toggleIsOpen}>
         <div className={styles.wrapper}>
-          <Avatar image="/images/logo.jpg" size="normal" shape="circle" />
+          <Image
+            src={imagePath}
+            width={35}
+            height={35}
+            alt="Picture of the author"
+            className="avatar-image"
+          />
           <h3>{loading ? "Loading..." : userData?.email || "Dimitar"}</h3>
         </div>
         <i className="fa-solid fa-arrow-down"></i>

@@ -1,14 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Avatar } from "primereact/avatar";
 import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
 import { useRouter } from "next/navigation";
-
+import { Menu } from "primereact/menu";
 import styles from "./page.module.css";
 import PageHeader from "../components/utils/PageHeader";
+import Image from "next/image";
 
 interface User {
   id: number;
@@ -19,7 +18,6 @@ interface User {
 
 export default function UserList() {
   const router = useRouter();
-
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [globalFilter, setGlobalFilter] = useState<string>("");
@@ -46,7 +44,16 @@ export default function UserList() {
 
   const imageBodyTemplate = (user: User) => {
     const imageUrl = user?.image || "/images/avatar-placeholder.jpg";
-    return <Avatar image={imageUrl} size="large" shape="circle" />;
+    return (
+      <Image
+        src={imageUrl}
+        width={60}
+        height={60}
+        alt="Picture of the author"
+        className="avatar-image"
+      />
+    );
+   
   };
 
   const renderHeader = () => {
@@ -71,9 +78,33 @@ export default function UserList() {
 
   if (loading) return <p>Loading...</p>;
 
+  const actionBtnsTemplate = (user: User) => {
+    const menu = useRef<Menu>(null);
+
+    const items = [
+      {
+        label: "Edit",
+        icon: "pi pi-pencil",
+        command: () => {
+          router.push(`/users/edit/${user.id}`);
+        },
+      },
+    ];
+    return (
+      <div className={styles.actionBtns}>
+        <Menu model={items} popup ref={menu} id={`overlay_menu_${user.id}`} />
+        <button
+          className="p-button p-component"
+          onClick={(event) => menu.current?.toggle(event)}
+        >
+          <i className="pi pi-cog"></i>
+        </button>
+      </div>
+    );
+  };
+
   return (
     <section className="dashboard-section custom-section">
-    
       <PageHeader title="" link="/users/create" linkText="Create User" />
       <DataTable
         value={users}
@@ -98,6 +129,7 @@ export default function UserList() {
           sortable
           style={{ width: "25%" }}
         ></Column>
+        <Column header="" body={actionBtnsTemplate}></Column>
       </DataTable>
     </section>
   );
