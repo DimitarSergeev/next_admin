@@ -1,7 +1,7 @@
 "use client";
 import styles from "./Nav.module.css";
 import { useState, useEffect } from "react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
@@ -23,35 +23,14 @@ interface SessionResponse {
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [userData, setUserData] = useState<User | undefined>({});
-  const [loading, setLoading] = useState(true);
   const [mobileVisible, setMobileVisible] = useState(false);
+  const { data: session, status } = useSession();
+  
   const pathname = usePathname();
   useEffect(() => {
    setMobileVisible(false);
   }, [pathname]);
-  useEffect(() => {
-    async function fetchSession() {
-      try {
-        const res = await fetch("/api/auth/session");
-        if (res.ok) {
-          const session: SessionResponse = await res.json();
-
-          if (session.user && session.user.email) {
-            setUserData(session.user);
-          }
-        } else {
-          console.error("Failed to fetch session");
-        }
-      } catch (error) {
-        console.error("Error fetching session:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchSession();
-  }, []);
+  
   useEffect(()=>{
 
   },[])
@@ -63,7 +42,7 @@ export default function Nav() {
     setSearchOpen(value);
   };
 
-  const imagePath = userData?.image || "/images/avatar-placeholder.jpg";
+  const imagePath = session?.user?.image || "/images/avatar-placeholder.jpg";
   return (
     <>
       <nav className={styles.navigation}>
@@ -109,7 +88,9 @@ export default function Nav() {
                 alt="Picture of the author"
                 className="avatar-image"
               />
-              <h3 className={styles.userEmail}>{loading ? "Loading..." : userData?.email || "Dimitar"}</h3>
+              <h3 className={styles.userEmail}>
+                { session?.user?.email || "User"}
+              </h3>
             </div>
             <i className="fa-solid fa-arrow-down"></i>
 

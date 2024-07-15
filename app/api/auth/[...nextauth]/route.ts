@@ -6,6 +6,10 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
+     maxAge: 12 * 60 * 60, // Session will expire in 12 hours
+  },
+  jwt: {
+     maxAge: 12 * 60 * 60, // Session will expire in 12 hours 
   },
   providers: [
     CredentialsProvider({
@@ -70,7 +74,6 @@ export const authOptions: NextAuthOptions = {
           ...token,
           id: u.id,
           randomKey: u.randomKey,
-          
         };
       }
       return token;
